@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import SpList from './SpList/SpList';
 import SpItem from './SpItem/SpItem';
+import SpSave from './SpSave/SpSave';
 
 class App extends Component {
   constructor (props) {
@@ -19,6 +20,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <SpSave/>
         <SpList
           headerElems={<h1>Publicaciones</h1>}
           itemsElems={this.state.items.map(item => <SpItem key={item.slug} info={item}></SpItem>)}
