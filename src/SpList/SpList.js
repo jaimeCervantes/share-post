@@ -1,27 +1,40 @@
 import React from 'react';
 import './SpList.css';
+import PropTypes from 'prop-types';
 
 class SpList extends React.Component {
+  static typeElems = PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element,
+    PropTypes.arrayOf(PropTypes.element)
+  ]);
+
+  static propTypes = {
+    headerElems: SpList.typeElems,
+    itemsElems: SpList.typeElems,
+    footerElems: SpList.typeElems
+  };
+
   render () {
     const footerElems = this.props.footerElems;
     const itemsElems = this.props.itemsElems;
     const headerElems = this.props.headerElems;
 
     return (
-      <section class="ps-list">
+      <section className="sp-list">
 
         {this.props.headerElems ?
-          <header>
+          <header className="sp-list__header">
             {headerElems}
           </header>
         : null}
 
-        <div class="ps-list__content">
+        <div className="sp-list__content">
           {itemsElems}
         </div>
 
         {footerElems ?
-          <footer class="ps-list__footer">
+          <footer className="sp-list__footer">
             {footerElems}
           </footer>
         : null}
