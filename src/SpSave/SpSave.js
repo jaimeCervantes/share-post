@@ -1,5 +1,6 @@
 import React from 'react';
 import './SpSave.css';
+import SpForm from '../SpForm/SpForm';
 
 class SpSave extends React.Component {
   constructor(props) {
@@ -12,6 +13,7 @@ class SpSave extends React.Component {
     };
 
     this.textName = React.createRef();
+    this.form = React.createRef();
 
     this.categories = [
       {
@@ -40,36 +42,30 @@ class SpSave extends React.Component {
     this.textName.current.focus();
   }
 
-  comparisonMultiSelect (value, elem) {
-    return elem === value;
-  }  
-
-  handleOnChange = (e) => {
-    const target = e.target;
-    let value = target.type === 'checkbox' ? target.checked : target.value;
-    const name = target.name;
-    if (target.type === 'select-multiple') {
-      value = Array.prototype.slice.call(target.options, 0).filter(opt => opt.selected).map(opt => opt.value)
-    }
-
-    this.setState({ [name]: value });
+  handleOnChange = state => {
+    this.setState(state);
   }
 
   render () {
-    return (<form className="sp-save" action="">
+    return (
+      <SpForm 
+          ref={this.form}
+          className="sp-save"
+          action=""
+          handleOnChange={this.handleOnChange}>
         <label>
           Nombre o título
           <input 
             name="name"
             value={this.state.name} 
-            onChange={this.handleOnChange}
+            onChange={this.form.current.handleOnChange}
             ref={this.textName}/>
         </label>
         <label> Contenido
           <textarea
             name="content"
             value={this.state.content}
-            onChange={this.handleOnChange}>
+            onChange={this.form.current.handleOnChange}>
           </textarea>
         </label>
         <label>
@@ -77,7 +73,7 @@ class SpSave extends React.Component {
           <select 
             name="categories"
             value={this.state.categories} 
-            onChange={this.handleOnChange}
+            onChange={this.form.current.handleOnChange}
             multiple={true}>
               {this.categories.map(tag => <option key={tag.id} value={tag.id}>{tag.name}</option>)}
           </select>
@@ -88,7 +84,7 @@ class SpSave extends React.Component {
           <select 
             name="stores"
             value={this.state.stores}
-            onChange={this.handleOnChange}
+            onChange={this.form.current.handleOnChange}
             multiple>
               {this.stores.map(tag => <option key={tag.id} value={tag.id}>{tag.name}</option>)}
           </select>
@@ -96,7 +92,7 @@ class SpSave extends React.Component {
         <footer>
           <button type="submit">Guardar</button>
         </footer>
-      </form>)
+      </SpForm>)
   }
 }
 
