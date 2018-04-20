@@ -20,7 +20,7 @@ function HOCSpForm(FormComponent) {
 
     handleOnSubmit = (e) => {
       e.preventDefault();
-      if(this.props.onSubmit) {
+      if (this.props.onSubmit) {
         this.props.onSubmit(this.state);
       }
     };

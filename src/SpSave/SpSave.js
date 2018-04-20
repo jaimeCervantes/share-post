@@ -33,7 +33,7 @@ class SpSaveForm extends React.Component {
         <label className="sp-form__field">
           Nombre o título
           {/*
-              If some data was gotten from a parent component or from the HOC component, the state is controlled inside the HOC component
+              If some "data" was gotten from a parent component or from the HOC component, the state is controlled inside the HOC component
             */}
           <input 
             name="name"
