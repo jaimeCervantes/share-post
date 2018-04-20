@@ -1,16 +1,6 @@
 import React from 'react';
 
 class SpForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: '',
-      content: '',
-      categories: [],
-      stores: []
-    };
-  }
-
   handleOnChange = (e) => {
     const target = e.target;
     let value = target.type === 'checkbox' ? target.checked : target.value;
@@ -22,8 +12,15 @@ class SpForm extends React.Component {
     this.props.handleOnChange({ [name]: value });
   }
 
+  onSubmit = e => {
+    e.preventDefault();
+    if(this.props.onSubmit) {
+      this.props.onSubmit(e);
+    }
+  }
+
   render () {
-    return (<form className="sp-save" action="">
+    return (<form className="sp-save" action="" onSubmit={this.onSubmit}>
         {this.props.children}
       </form>)
   }

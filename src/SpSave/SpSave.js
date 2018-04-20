@@ -46,26 +46,36 @@ class SpSave extends React.Component {
     this.setState(state);
   }
 
+  onSubmit = e => {
+    console.log(e);
+    console.log(this.state);
+  }
+
+  /**
+   *  onChange={e => this.form.current.handleOnChange(e)}
+   *  using an anonymous arrow function to use ref this.form when it is setted
+   */
   render () {
     return (
       <SpForm 
           ref={this.form}
           className="sp-save"
           action=""
-          handleOnChange={this.handleOnChange}>
+          handleOnChange={this.handleOnChange}
+          onSubmit={this.onSubmit}>
         <label>
           Nombre o título
           <input 
             name="name"
             value={this.state.name} 
-            onChange={this.form.current.handleOnChange}
+            onChange={e => this.form.current.handleOnChange(e)}
             ref={this.textName}/>
         </label>
         <label> Contenido
           <textarea
             name="content"
             value={this.state.content}
-            onChange={this.form.current.handleOnChange}>
+            onChange={e => this.form.current.handleOnChange(e)}>
           </textarea>
         </label>
         <label>
@@ -73,7 +83,7 @@ class SpSave extends React.Component {
           <select 
             name="categories"
             value={this.state.categories} 
-            onChange={this.form.current.handleOnChange}
+            onChange={e => this.form.current.handleOnChange(e)}
             multiple={true}>
               {this.categories.map(tag => <option key={tag.id} value={tag.id}>{tag.name}</option>)}
           </select>
@@ -84,7 +94,7 @@ class SpSave extends React.Component {
           <select 
             name="stores"
             value={this.state.stores}
-            onChange={this.form.current.handleOnChange}
+            onChange={e => this.form.current.handleOnChange(e)}
             multiple>
               {this.stores.map(tag => <option key={tag.id} value={tag.id}>{tag.name}</option>)}
           </select>
