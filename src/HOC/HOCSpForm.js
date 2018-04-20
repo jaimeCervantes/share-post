@@ -1,5 +1,4 @@
 import React from 'react';
-import './HOCSpForm.css'
 
 function HOCSpForm(FormComponent) {
   return class extends React.Component  {

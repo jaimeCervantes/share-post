@@ -1,5 +1,6 @@
 import React from 'react';
-import HOCSpForm from '../HOC/HOCSpForm.js'
+import HOCSpForm from '../HOC/HOCSpForm'
+import SpForm from '../SpForm/SpForm'
 
 class SpSaveForm extends React.Component {
   constructor(props) {
@@ -29,7 +30,8 @@ class SpSaveForm extends React.Component {
 
   render () {
     const { onChange, data, onSubmit } = this.props.injectedProps;
-    return (<form className="sp-form" action={this.props.action} onSubmit={onSubmit}>
+    return (
+      <SpForm action={this.props.action} onSubmit={onSubmit}>
         <label className="sp-form__field">
           Nombre o título
           {/*
@@ -72,7 +74,8 @@ class SpSaveForm extends React.Component {
         <footer>
           <button type="submit">Guardar</button>
         </footer>
-      </form>);
+      </SpForm>
+    );
   }
 }
 
