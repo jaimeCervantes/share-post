@@ -1,4 +1,5 @@
 import React from 'react';
+import './HOCSpForm.css'
 
 function HOCSpForm(FormComponent) {
   return class extends React.Component  {
@@ -31,7 +32,7 @@ function HOCSpForm(FormComponent) {
       // Pass props that are injected from this HOC
       const injectedProps = { onSubmit: this.handleOnSubmit, onChange: this.handleOnChange, data: this.state };
 
-      return (<FormComponent
+      return (<FormComponent className="sp-form"
         injectedProps={injectedProps}
         {...passProps}>
         </FormComponent>);

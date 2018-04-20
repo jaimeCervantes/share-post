@@ -1,5 +1,4 @@
 import React from 'react';
-import './SpSave.css';
 import HOCSpForm from '../HOC/HOCSpForm.js'
 
 class SpSaveForm extends React.Component {
@@ -30,8 +29,8 @@ class SpSaveForm extends React.Component {
 
   render () {
     const { onChange, data, onSubmit } = this.props.injectedProps;
-    return (<form className="sp-save" action={this.props.action} onSubmit={onSubmit}>
-        <label>
+    return (<form className="sp-form" action={this.props.action} onSubmit={onSubmit}>
+        <label className="sp-form__field">
           Nombre o título
           {/*
               If some data was gotten from a parent component or from the HOC component, the state is controlled inside the HOC component
@@ -42,14 +41,14 @@ class SpSaveForm extends React.Component {
             onChange={onChange}
             />
         </label>
-        <label> Contenido
+        <label className="sp-form__field"> Contenido
           <textarea
             name="content"
             value={data.content}
             onChange={onChange}>
           </textarea>
         </label>
-        <label>
+        <label className="sp-form__field">
           Categorías:
           <select 
             name="categories"
@@ -60,7 +59,7 @@ class SpSaveForm extends React.Component {
           </select>
         </label>
 
-        <label>
+        <label className="sp-form__field">
           Tiendas:
           <select 
             name="stores"

@@ -1,0 +1,23 @@
+.sp-form {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+}
+
+.sp-form__field {
+  display: flex;
+  padding-bottom: 10px;
+}
+
+.sp-form__field input,
+.sp-form__field select,
+.sp-form__field textarea {
+  margin-left: 10px;
+  padding: 5px;
+}
+
+.sp-form button {
+  padding: 5px;
+}
