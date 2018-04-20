@@ -20,7 +20,15 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <SpSave />
+        {/* We can put <SpSave> without state form creating a new object */}
+        <SpSave></SpSave>
+        {/* When for example we got some data and we want update or edit an object*/}
+        <SpSave state={{
+          name: 'Jaime',
+          content: 'Contenido Jaime',
+          categories: [],
+          stores: []
+        }}/>
         <SpList
           headerElems={<h1>Publicaciones</h1>}
           itemsElems={this.state.items.map(item => <SpItem key={item.slug} info={item}></SpItem>)}
