@@ -12,7 +12,7 @@ function HOCSpForm(FormComponent) {
       let value = target.type === 'checkbox' ? target.checked : target.value;
       const name = target.name;
       if (target.type === 'select-multiple') {
-        value = Array.prototype.slice.call(target.options, 0).filter(opt => opt.selected).map(opt => opt.value)
+        value = Array.from(target.options).slice(0).filter(opt => opt.selected).map(opt => opt.value)
       }
       this.setState({ [name]: value });
     };
