@@ -25,7 +25,7 @@ function HOCSpForm(FormComponent) {
     };
 
     render () {
-      // only re-pass props that the FormComponent needs. The porps state and onSubmit are used here in this HOC
+      // only re-pass props that the FormComponent needs. The prop "state" and onSubmit are used here in this HOC
       // passProps are props not used from this HOC
       const { state, onSubmit, ...passProps } = this.props;
       // Pass props that are injected from this HOC
